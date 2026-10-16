@@ -45,8 +45,9 @@ public class CheckoutEvent extends Event {
             System.out.println("*** resource not available at time " + this.getTime());
             return null;
         } else {
+            resource.borrow();
             System.out.println("Checkout of " + resource + " at time " + this.getTime());
-            int maxDuration = 60;
+            int maxDuration = resource.getCheckoutDuration();
             int extraTime = random.nextInt(maxDuration - MIN_CHECKOUT_DURATION + 1);
             int returnTime = this.getTime() + MIN_CHECKOUT_DURATION + extraTime;
             return new ReturnEvent(returnTime, resource);

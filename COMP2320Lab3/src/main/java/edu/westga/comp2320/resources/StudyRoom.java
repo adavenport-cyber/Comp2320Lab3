@@ -1,4 +1,5 @@
 package edu.westga.comp2320.resources;
+import static edu.westga.comp2320.SimulationParameters.*;
 
 /**
  * The StudyRoom class represents a study room resource in the resource center.
@@ -23,6 +24,11 @@ public class StudyRoom extends Resource {
     @Override
     public String getCode() {
         return this.code;
+    }
+
+    @Override
+    public int getCheckoutDuration() {
+        return TABLET_CHECKOUT_DURATION;
     }
 
     @Override

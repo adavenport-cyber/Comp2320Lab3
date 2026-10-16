@@ -5,7 +5,7 @@ import edu.westga.comp2320.resources.Resource;
 /**
  * The ReturnEvent class represents a resource being returned to the resource center.
  *
- * @author Andrew Davenport
+ * @author Andrew Dvenport
  */
 public class ReturnEvent extends Event {
     private Resource resource;
@@ -24,6 +24,7 @@ public class ReturnEvent extends Event {
 
     @Override
     public Event processEvent() {
+        this.resource.returnItem();
         System.out.println("Return of " + this.resource + " at time " + this.getTime());
         return null;
     }

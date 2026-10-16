@@ -1,5 +1,7 @@
 package edu.westga.comp2320.resources;
 
+import static edu.westga.comp2320.SimulationParameters.*;
+
 /**
  * The Laptop class represents a laptop resource in the resource center.
  * Each laptop has a unique code and a defined checkout duration.
@@ -28,5 +30,10 @@ public class Laptop extends Resource {
     @Override
     public String getType() {
         return TYPE;
+    }
+
+    @Override
+    public int getCheckoutDuration() {
+        return LAPTOP_CHECKOUT_DURATION;
     }
 }

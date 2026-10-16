@@ -6,7 +6,15 @@ package edu.westga.comp2320.resources;
  *
  * @author COMP2320
  */
-public abstract class Resource {
+public abstract class Resource implements Borrowable {
+    private boolean available;
+
+    /**
+     * Creates a new Resource that is available.
+     */
+    public Resource() {
+        this.available = true;
+    }
 
     /**
      * Returns the unique code identifying this resource.
@@ -22,6 +30,21 @@ public abstract class Resource {
      * @return the type of this resource
      */
     public abstract String getType();
+
+    @Override
+    public void borrow() {
+        this.available = false;
+    }
+
+    @Override
+    public void returnItem() {
+        this.available = true;
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return this.available;
+    }
 
     @Override
     public String toString() {

@@ -30,13 +30,22 @@ public class CheckoutEvent extends Event {
 
     @Override
     public Event processEvent() {
-        Resource resource = this.resourceManager.getResource();
+        Random random = new Random();
+        int number = random.nextInt(100);
+        String resourceType;
+        if (number < PROBABILITY_OF_LAPTOP) {
+            resourceType = "Laptop";
+        } else if (number < PROBABILITY_OF_LAPTOP + PROBABILITY_OF_TABLET) {
+            resourceType = "Tablet";
+        } else {
+            resourceType = "StudyRoom";
+        }
+        Resource resource = this.resourceManager.getResourceByType(resourceType);
         if (resource == null) {
             System.out.println("*** resource not available at time " + this.getTime());
             return null;
         } else {
             System.out.println("Checkout of " + resource + " at time " + this.getTime());
-            Random random = new Random();
             int maxDuration = 60;
             int extraTime = random.nextInt(maxDuration - MIN_CHECKOUT_DURATION + 1);
             int returnTime = this.getTime() + MIN_CHECKOUT_DURATION + extraTime;
